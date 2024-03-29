@@ -33,7 +33,7 @@ class TabularAgent(ABC):
         pass
 
     @abstractmethod
-    def policy(self, state):
+    def policy(self, state, use_target):
         """
         This is where you would do action selection.
         For epsilon greedy you can opt to make a separate object for epsilon greedy

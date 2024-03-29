@@ -3,13 +3,16 @@ import gymnasium as gym
 from cliffwalksim.agents.randomagent import RandomAgent
 from cliffwalksim.agents.tabularagent import TabularAgent
 
+from cliffwalksim.agents.sarsa_agent import SARSA
+from cliffwalksim.agents.q_learning_agent import QLearning
+from cliffwalksim.agents.double_q_learning_agent import DoubleQLearning
+
 
 class AgentFactory:
     """
     Naive factory method implementation for
     RL agent creation.
     """
-
     @staticmethod
     def create_agent(agent_type: str, env: gym.Env) -> TabularAgent:
         """
@@ -22,11 +25,11 @@ class AgentFactory:
         action_space = env.action_space
 
         if agent_type == "SARSA":
-            return RandomAgent(obs_space, action_space)    # CHANGE THIS
+            return SARSA(obs_space, action_space)
         elif agent_type == "Q-LEARNING":
-            return RandomAgent(obs_space, action_space)
+            return QLearning(obs_space, action_space)
         elif agent_type == "DOUBLE-Q-LEARNING":
-            return RandomAgent(obs_space, action_space)
+            return DoubleQLearning(obs_space, action_space)
         elif agent_type == "RANDOM":
             return RandomAgent(obs_space, action_space)
 
